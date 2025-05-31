@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caburés do Asfalto - Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --azul-principal: #0055a4;
+            --azul-escuro: #003a70;
+            --azul-claro: #0077cc;
+            --amarelo: #ffd700;
+            --amarelo-escuro: #e6c200;
+            --branco: #ffffff;
+            --cinza-claro: #f5f7fa;
+            --cinza-escuro: #6c757d;
+            --verde: #28a745;
+            --vermelho: #dc3545;
+            --roxo: #9c27b0;
+            --rosa: #e91e63;
+            --preto: #1a1a1a;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            line-height: 1.6;
+            padding-bottom: 70px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header Mobile */
+        header {
+            background: linear-gradient(135deg, var(--preto), #333);
+            color: var(--branco);
+            padding: 1rem 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--amarelo);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: var(--amarelo);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--preto);
+            border: 2px solid var(--branco);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-text h1 {
+            font-size: 1.3rem;
+            background: linear-gradient(to right, var(--amarelo), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-text p {
+            font-size: 0.7rem;
+            color: var(--cinza-claro);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--amarelo);
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--amarelo), var(--amarelo-escuro));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            border: 1px solid var(--branco);
+            color: var(--preto);
+        }
+
+        .points {
+            font-weight: bold;
+            color: var(--amarelo);
+            font-size: 0.9rem;
+        }
+
+        .level {
+            background: var(--verde);
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* Menu Hamburguer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--amarelo);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            background-color: var(--amarelo);
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100%;
+            padding-top: 70px;
+            z-index: 5;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        nav.active {
+            right: 0;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            padding: 15px;
+        }
+
+        nav li {
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            color: var(--preto);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--preto);
+            color: var(--amarelo);
+        }
+
+        /* Conteúdo Principal */
+        .container {
+            padding: 15px;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        section h2 {
+            color: var(--amarelo);
+            border-bottom: 2px solid var(--azul-claro);
+            padding-bottom: 8px;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            color: var(--branco);
+            font-size: 0.9rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--preto), #333);
+            color: var(--amarelo);
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .card-body {
+            padding: 15px;
+            color: var(--branco);
+            font-size: 0.9rem;
+        }
+
+        .card-body ul {
+            padding-left: 20px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+
+        .card-body li {
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--preto), #333);
+            color: var(--amarelo);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #111, #222);
+            transform: translateY(-2px);
+        }
+
+        .btn-amarelo {
+            background: linear-gradient(135deg, var(--amarelo), var(--amarelo-escuro));
+            color: var(--preto);
+            border: 1px solid var(--preto);
+        }
+
+        /* Seção Competição */
+        .competition-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .competition-info {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .ranking-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .ranking-place {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .ranking-place.first {
+            border: 2px solid #FFD700;
+        }
+
+        .ranking-place.second {
+            border: 2px solid #C0C0C0;
+        }
+
+        .ranking-place.third {
+            border: 2px solid #CD7F32;
+        }
+
+        .crown {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.8rem;
+            color: var(--amarelo);
+        }
+
+        .medal {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .ranking-place h3 {
+            font-size: 1.2rem;
+        }
+
+        .ranking-place .points {
+            font-size: 1.2rem;
+            margin: 8px 0;
+        }
+
+        .ranking-place .prize {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .ipva-benefit {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0 10px;
+            text-align: center;
+            border: 2px dashed var(--amarelo);
+        }
+
+        .ipva-benefit h3 {
+            color: var(--amarelo);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .ipva-benefit p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .ipva-benefit .discount {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--verde);
+            margin: 10px 0;
+        }
+
+        /* Seção Quiz */
+        .quiz-container {
+            background: rgba(0, 70, 171, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .quiz-question h3 {
+            color: var(--amarelo);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Seção Caça-Palavras */
+        .word-search-container {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .word-search-grid {
+            display: inline-grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 2px;
+            margin: 10px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .word-cell {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .word-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+        }
+
+        .word-list div {
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        /* Gamificação */
+        .gamification-container {
+            background: rgba(156, 39, 176, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .badges-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .badge {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--roxo), var(--rosa));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge i {
+            font-size: 1.5rem;
+            margin-bottom: 3px;
+        }
+
+        .badge span {
+            font-size: 0.6rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .leaderboard {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .progress-container {
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            height: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--azul-claro), var(--verde));
+            border-radius: 8px;
+            width: 45%;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* Toast de Notificação */
+        .toast {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-150%);
+            background: var(--verde);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 90%;
+            font-size: 0.9rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--preto), #333);
+            color: var(--branco);
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 2px solid var(--amarelo);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-section {
+            padding: 0 15px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+            color: var(--amarelo);
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: var(--amarelo);
+            border-radius: 50%;
+            color: var(--preto);
+            text-align: center;
+            line-height: 35px;
+            font-size: 1rem;
+        }
+
+        .copyright {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+        }
+
+        /* Menu Mobile Ativo */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 4;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Botão Voltar ao Topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: var(--amarelo);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--preto);
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            z-index: 99;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries para telas maiores */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            nav {
+                position: relative;
+                width: auto;
+                height: auto;
+                right: auto;
+                padding: 0.8rem;
+            }
+            
+            nav ul {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            nav li {
+                margin-bottom: 0;
+            }
+            
+            .overlay {
+                display: none !important;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-owl"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Caburés do Asfalto</h1>
+                    <p>Sua jornada no trânsito</p>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <div class="points">850 pontos</div>
+                    <div class="level">Nível 3</div>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#competicoes"><i class="fas fa-trophy"></i> Competições</a></li>
+            <li><a href="#quiz"><i class="fas fa-question-circle"></i> Quiz</a></li>
+            <li><a href="#caca-palavras"><i class="fas fa-search"></i> Caça-Palavras</a></li>
+            <li><a href="#aulas"><i class="fas fa-video"></i> Aulas</a></li>
+            <li><a href="#beneficios"><i class="fas fa-gift"></i> Benefícios</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Seção Competições -->
+        <section id="competicoes">
+            <h2><i class="fas fa-trophy"></i> Competições</h2>
+            <div class="section-intro">
+                <p>Participe e concorra a prêmios incríveis! Top 3 ganha Carteira Social Caburé e benefícios.</p>
+            </div>
+            
+            <div class="competition-section">
+                <div class="competition-info">
+                    <h3>Ranking Atual</h3>
+                    <p>Encerra em: <strong>15/12/2023</strong></p>
+                    <button class="btn btn-amarelo">
+                        <i class="fas fa-medal"></i> Participe Agora!
+                    </button>
+                </div>
+                
+                <div class="ranking-container">
+                    <div class="ranking-place first">
+                        <div class="crown"><i class="fas fa-crown"></i></div>
+                        <div class="medal"><i class="fas fa-medal"></i></div>
+                        <h3>1º Lugar</h3>
+                        <p>Carlos Silva</p>
+                        <div class="points">2.850 pontos</div>
+                        <div class="prize">
+                            <i class="fas fa-id-card"></i> Carteira Social<br>
+                            <i class="fas fa-gift"></i> Curso Avançado<br>
+                            <i class="fas fa-tags"></i> 50% off
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-place second">
+                        <div class="medal"><i class="fas fa-medal"></i></div>
+                        <h3>2º Lugar</h3>
+                        <p>Amanda Oliveira</p>
+                        <div class="points">2.450 pontos</div>
+                        <div class="prize">
+                            <i class="fas fa-id-card"></i> Carteira Social<br>
+                            <i class="fas fa-gift"></i> Kit Segurança<br>
+                            <i class="fas fa-tags"></i> 40% off
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-place third">
+                        <div class="medal"><i class="fas fa-medal"></i></div>
+                        <h3>3º Lugar</h3>
+                        <p>Roberto Santos</p>
+                        <div class="points">2.150 pontos</div>
+                        <div class="prize">
+                            <i class="fas fa-id-card"></i> Carteira Social<br>
+                            <i class="fas fa-gift"></i> Curso Defensiva<br>
+                            <i class="fas fa-tags"></i> 30% off
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ipva-benefit">
+                    <h3>Benefício Exclusivo</h3>
+                    <p>Sem infrações por 3 anos consecutivos:</p>
+                    <div class="discount">1% OFF</div>
+                    <p>no licenciamento do veículo</p>
+                    <p style="margin-top: 10px; font-size: 0.8rem;">
+                        <i class="fas fa-info-circle"></i> Desconto cumulativo (até 10%)
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Gamificação -->
+        <section id="gamificacao">
+            <h2><i class="fas fa-trophy"></i> Desafios</h2>
+            <div class="section-intro">
+                <p>Complete desafios, ganhe pontos e conquiste badges exclusivas!</p>
+            </div>
+            
+            <div class="gamification-container">
+                <h3>Seu Progresso</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Nível 3</span>
+                        <span>850/2000</span>
+                        <span>Nível 4</span>
+                    </div>
+                </div>
+                
+                <div class="badges-container">
+                    <div class="badge earned">
+                        <i class="fas fa-medal"></i>
+                        <span>Novato</span>
+                    </div>
+                    <div class="badge earned">
+                        <i class="fas fa-star"></i>
+                        <span>Quiz Master</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-crown"></i>
+                        <span>Expert</span>
+                    </div>
+                    <div class="badge earned">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Detetive</span>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="btn btn-amarelo" id="share-btn">
+                        <i class="fas fa-share-alt"></i> Compartilhar
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Quiz -->
+        <section id="quiz">
+            <h2><i class="fas fa-question-circle"></i> Quiz</h2>
+            <div class="section-intro">
+                <p>Teste seus conhecimentos! Cada resposta certa vale 50 pontos.</p>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>1. Qual a distância mínima ao ultrapassar um ciclista?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" name="q1" id="q1a">
+                            <label for="q1a">0,5 metro</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" name="q1" id="q1b">
+                            <label for="q1b">1 metro</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" name="q1" id="q1c">
+                            <label for="q1c">1,5 metros</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>2. O que significa a placa com "X" vermelho?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option">
+                            <input type="radio" name="q2" id="q2a">
+                            <label for="q2a">Proibido estacionar</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" name="q2" id="q2b">
+                            <label for="q2b">Proibido parar</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" name="q2" id="q2c">
+                            <label for="q2c">Sentido proibido</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="btn btn-amarelo" id="verificar-quiz">
+                        <i class="fas fa-check-circle"></i> Verificar
+                    </button>
+                    <div style="margin-top: 10px; color: var(--amarelo);">
+                        <i class="fas fa-coins"></i> Ganhe até 150 pontos!
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Caça-Palavras -->
+        <section id="caca-palavras">
+            <h2><i class="fas fa-search"></i> Caça-Palavras</h2>
+            <div class="section-intro">
+                <p>Encontre as palavras relacionadas ao trânsito. Cada palavra vale 30 pontos!</p>
+            </div>
+            
+            <div class="word-search-container">
+                <div class="word-search-grid" id="word-search-grid">
+                    <!-- Gerado por JavaScript -->
+                </div>
+                
+                <div class="word-list" id="word-list">
+                    <div>MOTORISTA</div>
+                    <div>PEDESTRE</div>
+                    <div>PLACAS</div>
+                    <div>SEMAFORO</div>
+                    <div>VELOCIDADE</div>
+                    <div>MULTA</div>
+                    <div>CINTO</div>
+                    <div>ALCOOL</div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="btn" id="reiniciar-caca">
+                        <i class="fas fa-sync-alt"></i> Reiniciar
+                    </button>
+                    <div style="margin-top: 10px; color: var(--amarelo);">
+                        <i class="fas fa-star"></i> 4 de 8 palavras
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Aulas Curtas -->
+        <section id="aulas">
+            <h2><i class="fas fa-video"></i> Aulas</h2>
+            <div class="section-intro">
+                <p>Aprenda sobre trânsito de forma rápida. Ganhe 100 pontos por aula!</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">Legislação de Trânsito</div>
+                    <div class="card-body">
+                        <p><strong>Duração:</strong> 8 min</p>
+                        <p>Principais leis do Código de Trânsito Brasileiro.</p>
+                        <ul>
+                            <li>Direitos e deveres</li>
+                            <li>Sinalização</li>
+                            <li>Infrações</li>
+                        </ul>
+                        <button class="btn">
+                            <i class="fas fa-play-circle"></i> Assistir
+                        </button>
+                        <div style="margin-top: 8px; color: var(--amarelo); text-align: center;">
+                            <i class="fas fa-coins"></i> +100 pontos
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Direção Preventiva</div>
+                    <div class="card-body">
+                        <p><strong>Duração:</strong> 6 min</p>
+                        <p>Técnicas para evitar acidentes.</p>
+                        <ul>
+                            <li>Distância segura</li>
+                            <li>Visão periférica</li>
+                            <li>Condições adversas</li>
+                        </ul>
+                        <button class="btn">
+                            <i class="fas fa-play-circle"></i> Assistir
+                        </button>
+                        <div style="margin-top: 8px; color: var(--amarelo); text-align: center;">
+                            <i class="fas fa-coins"></i> +100 pontos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Benefícios -->
+        <section id="beneficios">
+            <h2><i class="fas fa-gift"></i> Benefícios</h2>
+            <div class="section-intro">
+                <p>Vantagens especiais para os Caburés do Asfalto</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">Desconto no Licenciamento</div>
+                    <div class="card-body">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <div style="font-size: 2rem; color: var(--verde); font-weight: bold;">1% ao ano</div>
+                            <p>desconto cumulativo</p>
+                        </div>
+                        <p>Para ter direito:</p>
+                        <ul>
+                            <li>Carteira Social Caburé</li>
+                            <li>Sem infrações graves</li>
+                            <li>Sem acidentes com culpa</li>
+                            <li>1 ano = 1% desconto</li>
+                            <li>Máx. 10% em 10 anos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Parceiros</div>
+                    <div class="card-body">
+                        <p>Descontos em:</p>
+                        <ul>
+                            <li><i class="fas fa-car"></i> Oficinas: 20%</li>
+                            <li><i class="fas fa-gas-pump"></i> Combustível: 5%</li>
+                            <li><i class="fas fa-shopping-cart"></i> Acessórios: 15%</li>
+                            <li><i class="fas fa-utensils"></i> Restaurantes: 10%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <!-- Toast de Notificação -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Conquista desbloqueada!</span>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Caburés do Asfalto</h3>
+                <p>Reconhecendo os melhores motoristas</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Siga-nos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Caburés do Asfalto</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Menu Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const overlay = document.getElementById('overlay');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+        
+        // Gerador de caça-palavras
+        function generateWordSearch() {
+            const grid = document.getElementById('word-search-grid');
+            grid.innerHTML = '';
+            
+            const words = ['MOTORISTA', 'PEDESTRE', 'PLACAS', 'SEMAFORO', 'VELOCIDADE', 'MULTA', 'CINTO', 'ALCOOL'];
+            const gridSize = 8;
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            
+            // Criar grid vazio
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'word-cell';
+                    cell.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+                    grid.appendChild(cell);
+                }
+            }
+            
+            // Insere palavras no grid
+            const samplePositions = [
+                {word: 'MOTORISTA', row: 0, col: 0, horizontal: true},
+                {word: 'PEDESTRE', row: 3, col: 2, vertical: true},
+                {word: 'PLACAS', row: 5, col: 4, horizontal: true},
+                {word: 'SEMAFORO', row: 2, col: 1, vertical: true},
+            ];
+            
+            samplePositions.forEach(pos => {
+                for (let i = 0; i < pos.word.length; i++) {
+                    const index = pos.horizontal ? 
+                        (pos.row * gridSize + pos.col + i) :
+                        ((pos.row + i) * gridSize + pos.col);
+                    
+                    if (index < gridSize * gridSize) {
+                        grid.children[index].textContent = pos.word.charAt(i);
+                    }
+                }
+            });
+        }
+        
+        // Verificar respostas do quiz
+        document.getElementById('verificar-quiz').addEventListener('click', function() {
+            const q1c = document.getElementById('q1c');
+            const q2b = document.getElementById('q2b');
+            
+            let correctCount = 0;
+            
+            if (q1c.checked) correctCount++;
+            if (q2b.checked) correctCount++;
+            
+            if (correctCount === 2) {
+                showToast(`Parabéns! Acertou tudo e ganhou 100 pontos!`);
+            } else {
+                showToast(`Você acertou ${correctCount} de 2 perguntas. Ganhou ${correctCount * 50} pontos!`);
+            }
+        });
+        
+        // Mostrar notificação toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Compartilhar conquistas
+        document.getElementById('share-btn').addEventListener('click', function() {
+            showToast('Conquistas compartilhadas!');
+        });
+        
+        // Botão Voltar ao Topo
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Inicializar caça-palavras
+        generateWordSearch();
+        
+        // Animação da barra de progresso
+        setTimeout(() => {
+            document.getElementById('progress-fill').style.width = '45%';
+        }, 500);
+    </script>
+</body>
+</html>
